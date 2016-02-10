@@ -28,7 +28,11 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
     
     // Write a local resetCards function that will empty our card variables
     // and increase the number of attempts
-    
+    $scope.resetCards = function () {
+      $scope.card1 = null;
+      $scope.card2 = null;
+      $scope.attempts++;
+    }
 
 	
     // Next write a local isMatch function that accepts our two cards and if the card titles 
