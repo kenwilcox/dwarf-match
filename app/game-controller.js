@@ -38,13 +38,25 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
     // Next write a local isMatch function that accepts our two cards and if the card titles 
     // match, increases our totalMatches and returns true else returns false. After this refer 
     // back to readme.md
-	
-    
+    $scope.isMatch = function (x, y) {
+      if (x.title === y.title) {
+        $scope.totalMatches++;
+        return true;
+      } else {
+        return false;
+      }
+    }    
     
     // Finally, write a local checkVictory function that will set $scope.victory = true if the totalMatches 
     // is half the length of the deck. Tip: the game deck array is available at $scope.deck. When you're done
     // refer back to readme.md
-    
+    $scope.checkVictory = function () {
+      if ($scope.totalMatches >= ($scope.deck.length / 2)) {
+        $scope.victory = true;
+      } else {
+        $scope.victory = false;
+      }
+    }
 
     
     // Bonus Challenge: Write a function on $scope that can reset the game and add a button that calls it
