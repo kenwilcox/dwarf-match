@@ -34,7 +34,7 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
           $scope.checkVictory();
           $scope.resetCards();
         };
-        
+
         var card1 = $scope.card1;
         var card2 = $scope.card2;
         $timeout(function () {
@@ -82,7 +82,14 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
 
     
   // Bonus Challenge: Write a function on $scope that can reset the game and add a button that calls it
-    
-    
-    
+  $scope.reset = function () {
+    $scope.victory = false;
+    $scope.card1 = null;
+    $scope.card2 = null;
+    $scope.attempts = 0;
+    $scope.totalMatches = 0;
+    $scope.deck = GameService.getDeck();
+  }
+
+
 });
