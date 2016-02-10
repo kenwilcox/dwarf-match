@@ -16,28 +16,35 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
   $scope.attempts = 0;
   $scope.totalMatches = 0;
   $scope.Victory = false;
-
     
   // Next write a selectCard function on $scope that accepts a card object on click and
   // let's make it set card.show to true (boolean). Give it a test!
   // After you complete this refer back to readme.md
   $scope.selectCard = function (card) {
-    if ($scope.card1) {
-      $scope.card2 = card;
+    if (card.show != true) {
       card.show = true;
-    } else {
-      $scope.card1 = card;
-      card.show = true;
-      return;
-    }
-
-    $timeout(function () {
-      if (!$scope.isMatch($scope.card1, $scope.card2)) {
-        $scope.card1.show = false
-        $scope.card2.show = false;
-      }
-      $scope.resetCards()
-    }, 1000);
+      if ($scope.card1 === null) {
+        // if neither card is set
+        $scope.card1 = card;
+        return;
+      } else if ($scope.card2 === null) {
+        // if the first card is set
+        $scope.card2 = card;
+        if ($scope.isMatch($scope.card1, $scope.card2)) {
+          $scope.checkVictory();
+          $scope.resetCards();
+        };
+        
+        var card1 = $scope.card1;
+        var card2 = $scope.card2;
+        $timeout(function () {
+          if (card1) card1.show = false;
+          if (card2) card2.show = false;
+        }, 1000);
+        $scope.resetCards();
+        return;
+      };
+    };
   }    
 
     
