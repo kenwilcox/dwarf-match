@@ -5,21 +5,25 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
     
     // Create two card variables on $scope. These will be responsible
     // for keeping track of our selections as we click cards.
-    
-
+    $scope.card1 = null;
+    $scope.card2 = null;
     
     // Next we need to initate a few more variables on $scope for later use
     // Let's add variables for tracking the number of guesses (pairs flipped),
     // for the total number of correct guesses (pairs matched) and finally a
     // victory boolean to let our controller know if we've won. Refer to the index.html
     // for variable names
-    
+    $scope.attempts = 0;
+    $scope.totalMatches = 0;
+    $scope.Victory = false;
 
     
     // Next write a selectCard function on $scope that accepts a card object on click and
     // let's make it set card.show to true (boolean). Give it a test!
     // After you complete this refer back to readme.md
-    
+    $scope.selectCard = function (card) {
+      card.show = true;
+    }    
 
     
     // Write a local resetCards function that will empty our card variables
