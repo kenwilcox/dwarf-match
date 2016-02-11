@@ -15,7 +15,7 @@ app.controller('GameController', function ($scope, $timeout, GameService) {
   // for variable names
   $scope.attempts = 0;
   $scope.totalMatches = 0;
-  $scope.Victory = false;
+  $scope.victory = false;
     
   // Next write a selectCard function on $scope that accepts a card object on click and
   // let's make it set card.show to true (boolean). Give it a test!
